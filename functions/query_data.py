@@ -46,8 +46,9 @@ def main(query_text=False):
 
     #model = ChatOpenAI()
     model = GPT4All(model_name='Nous-Hermes-2-Mistral-7B-DPO.Q4_0.gguf', model_path='C:\\Users\\incar\\AppData\\Local\\nomic.ai\\GPT4All')
-    response_text = model.predict(prompt)
-
+    #response_text = model.predict(prompt)
+    response_text = model.generate(prompt, temp=0)
+   
     sources = [doc.metadata.get("source", None) for doc, _score in results]
     formatted_response = f"Response: {response_text}\nSources: {sources}"
     print(formatted_response)
